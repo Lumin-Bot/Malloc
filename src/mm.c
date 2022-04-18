@@ -10,16 +10,7 @@ void free(void *ptr);
 void *calloc(size_t nmemb, size_t size);
 void *realloc(void *ptr, size_t size);
 
-typedef struct Linkedlist{
-    struct Linkedlist *next;
-    struct Linkedlist *prev;
-} Linkedlists;
 
-typedef struct{
-    Linkedlists node;
-    size_t size;
-    char *block;
-}mem;
 
 /* When requesting memory from the OS using sbrk(), request it in
  * increments of CHUNK_SIZE. */
@@ -73,17 +64,6 @@ static inline __attribute__((unused)) int block_index(size_t x) {
 
 
 void *malloc(size_t size) {
-
-    void *ptr = NULL;
-    mem *stuff = NULL;
-
-    if(size == 0){
-        return NULL;
-    }
-
-    else if(size > 0){
-        return 0; // code here
-    }
 
     return bulk_alloc(size);
 }
